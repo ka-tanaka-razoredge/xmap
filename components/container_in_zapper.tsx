@@ -37,9 +37,6 @@ export default (props, ref) => {
     const element = document.getElementById('cmp-' + lop.component.id);
     if (element.style.height === '0px') {
       element.style.height = '';
-
-      // TODO: mediatorへlop.componentを渡す
-
       if (lop.component.id !== props.core.id) {
       } else {
         (async () => {
@@ -50,6 +47,15 @@ export default (props, ref) => {
     } else {
       element.style.height = '0px';
     }
+
+    // mediatorへlop.componentを渡す
+    (async () => {
+      console.log(lop.component);
+      const response = await axios.get('http://192.168.10.7:3900/component/show/' + lop.component.id);
+      props.sendComponents({
+        components: response.data.children,
+      });
+    })();
   }
   
   const drawChild = (component, floor) => {

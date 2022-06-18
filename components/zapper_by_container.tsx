@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import Container from '../components/container_in_zapper';
 
-export default () => {
+export default (props) => {
   const paneForContainers = useRef(null);
   const [aggregate, setAggregate] = useState([
     { id: 1, caption: 'テレビ台', what: 'container.shelf', logo: null },
@@ -30,13 +30,14 @@ export default () => {
   }, []);
   
   return (
-    <div>
+    <div style={{ width: '20%', height: '90%' }}>
       <div style={{ border: '1px solid black' }}>zapper_by_cotainer</div>
-      <div ref={ paneForContainers } style={{ border: '1px solid black', overflow: 'scroll' }}>
+      <div style={{ border: '1px solid black' }}>online service&emsp;&emsp;人文</div>
+      <div ref={ paneForContainers } style={{ border: '1px solid black', overflow: 'scroll', height: '850px' }}>
       {
         aggregate.map((value) => {
           return (
-            <Container core={ value } />
+            <Container core={ value } sendComponents={ props.sendComponents } />
           )
         })
       }
