@@ -18,6 +18,8 @@ export default (props, ref) => {
       uri = 'http://192.168.10.7:3900/res/container_shelf.png';
     } else if (container.what === 'container.drawer') {
       uri = 'http://192.168.10.7:3900/res/container_drawer.png';
+    } else if (container.what === 'container.trash') {
+      uri = 'http://192.168.10.7:3900/res/container_trash.png';
     }
     
     return (
